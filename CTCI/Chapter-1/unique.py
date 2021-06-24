@@ -29,4 +29,12 @@ def unique(string):
             return False
         ele.append(i)
     return True
+  
+## Without Using any DS  
+def isUnique(s):
+    s = sorted(s.lower())
+    for i in range(1, len(s)):
+        if s[i] == s[i - 1]:
+            return False
+    return True 
 
