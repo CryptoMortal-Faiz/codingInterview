@@ -1,27 +1,34 @@
-# Binary search
+# Binary Search
 
-# Algo
-''' Step 1: Sort the array
-    Step 2: Find the middle elemnt
-    Step 3: If middle is less then traverse through the elements on the right side vice versa on left if the elemnt is greater
+
+'''
+The time complexity of linear search is O(n)
+meaning that the time taken to execute increases
+with the number of items in our input list
 '''
 
+# ITERATIVE
 def binary_search(array,target):
-  array.sort()
-  n = len(array)
-  # middle element
-  
-  if array[n/2] == target:
-    return n/2
-  
-  # on right side 
-  if array[n/2] < target:
-    for i in range(0,n/2):
-      if array[i] == target:
-        return i
-  
-  # Left side
-  if array[n/2] > target:
-    for i in range(n/2,len(array):
-      if array[i] == target:
-        return i
+    l = 0
+    r = len(array)-1
+    index = -1
+    
+    while l<=r and index == -1:
+        mid = (l+r)//2
+        if target == array[mid]:
+            index = mid
+        else:
+            if target <= array[mid]:
+                r = mid-1
+            else:
+                l = mid+1
+    return index
+
+# RECURSIVE
+
+
+    
+    
+    
+# print(binary_search([9,9,9,0,0,0],9))
+print(binary_search([1,2,3,9],3))
