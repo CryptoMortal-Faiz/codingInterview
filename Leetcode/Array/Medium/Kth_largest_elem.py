@@ -20,17 +20,28 @@ class Solution:
 
 # find kth largest number in the array
 
+import heapq
 from heapq import *
-def kth_largest_number(arr,k):
-    
+ 
+# Function to find the k'th largest element in a list using min-heap
+def find_kth_largest(ints, k):
+ 
+    # base case
+    if not ints or len(ints) < k:
+        exit(-1)
+ 
+    # build a min-heap from the first `k` elements in the list
     minheap = []
     for i in range(k):
-        heappush(minheap, arr[i])
+        heappush(minheap,ints[i])
+ 
+    # do for remaining list elements
+    for i in range(k, len(ints)):
+        # if the current element is more than the root of the heap
+        if ints[i] > minheap[0]:
+            # replace root with the current element
+            heapq.heapreplace(minheap, ints[i])
     
-    for i in range(k,len(arr)):
-        if arr[i] > minheap[0]:
-            heappush(minheap,arr[i])
-    
-    return minheap[k-1]
-    
-print(kth_largest_number([1,2,3,4,5,6,9,10,13], 7))
+ 
+    # return the root of min-heap
+    return minheap[0]
